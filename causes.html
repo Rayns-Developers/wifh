@@ -52,7 +52,7 @@
   </nav>
     <!-- END nav -->
     
-    <div class="hero-wrap" style="background-image: url('images/bg_5.jpg');" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap" id="hero" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -64,6 +64,29 @@
       </div>
     </div>
 
+    
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row d-flex" id="blogs">
+          
+        </div>
+        <!-- <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </section>
     
     <!-- <section class="ftco-section">
       <div class="container">
@@ -284,6 +307,97 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
+  <script>
+    let PROJECT_ID = "wmdk9ehu";
+    let DATASET_NAME = "production";
+    let QUERY = encodeURIComponent("*[_type == 'purpose']{ title,'name':author->name, publishedAt, 'imageUrl': mainImage.asset->url, body }");
+    let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET_NAME}?query=${QUERY}`
+
+    async function getPosts(){
+      try{
+        
+        let response = await fetch(URL)
+        let {result} = await response.json()
+
+        // console.log(result.length)          
+
+        let blogs = await document.getElementById("blogs")
+        if(result.length > 0 ){
+          result.forEach(blog => {
+
+            let body = blog.body[0]
+            let children = blog.body[0].children
+            let blogText = "";
+            let addText = "";
+            // console.log(children)
+
+            children.forEach(child => {
+              addText += child.text 
+              
+            })
+            blogText = addText
+              
+
+            const pubDate = new Date(blog.publishedAt)
+            // blogs.innerHTML=`<div class="col-md-4 d-flex ftco-animate"><div class="blog-entry align-self-stretch"><a href="blog-single.html" class="block-20" style="background-image: url('https://cdn.sanity.io/images/wmdk9ehu/production/f91fe0c3a3853e1d755ca5fad90349b24fa1e4c7-800x533.jpg');"></a><div class="text p-4 d-block"><h3 class="heading mt-3"><a href="#">Clean Water for the Urban Area</a></h3><p></p><div class="meta mb-3"><div><a href="#">2023-03-16T15:28:25.495Z</a></div><div><a href="#">WIFH Admin</a></div></div></div></div></div>`
+
+            let divElCol = document.createElement("div")
+            let divElBlog = document.createElement("div")
+            let divElText = document.createElement("div")
+            let divElMeta = document.createElement("div")
+            let divElDate = document.createElement("div")
+            let divElAuth = document.createElement("div")
+    
+            divElCol.setAttribute("class", "col-md-4 d-flex")
+            divElBlog.setAttribute("class", "blog-entry align-self-stretch")
+            divElBlog.innerHTML=`<a href="#" class="block-20" style="background-image: url('${blog.imageUrl}');"></a>`
+            divElText.setAttribute("class", "text p-4 d-block")
+            divElText.innerHTML=`<h3 class="heading mt-3"><a href="#">${blog.title}</a></h3><p>${blogText}</p>`
+            divElMeta.setAttribute("class", "meta mb-3")
+            divElDate.innerHTML=`<a href="#"><em class="text-sm">posted on: ${pubDate}</em></a>`
+            divElAuth.innerHTML=`<a href="#"><em class="text-sm">Author: ${blog.name}</em></a>`
+    
+            blogs.appendChild(divElCol)
+            divElCol.appendChild(divElBlog)
+            divElBlog.appendChild(divElText)
+            divElText.appendChild(divElMeta)
+            divElMeta.appendChild(divElDate)
+            divElMeta.appendChild(divElAuth)
+          })
+        }else{
+          console.log("No result")
+        }
+
+      }catch(err){
+        alert(err)
+      }
+    }
+    getPosts()
+//Loading Hero Image
+  let QUERY2 = encodeURIComponent("*[_type == 'purposeImage']{ title,'name':author->name, publishedAt, 'imageUrl': mainImage.asset->url }");
+  let URL2 = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET_NAME}?query=${QUERY2}`
+
+  async function getImage(){
+    try{
+      
+      let response = await fetch(URL2)
+      let {result} = await response.json()         
+      let heroDiv = await document.getElementById("hero")
+
+      if(result.length > 0 ){
+        result.forEach(hero => {
+          heroDiv.setAttribute("style", `background-image: url(${hero.imageUrl});`)
+          const pubDate = new Date(hero.publishedAt)
+        })
+      }else{
+        console.log("No result")
+      }
+    }catch(err){
+      alert(err)
+    }
+  }
+ getImage()
+  </script>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>

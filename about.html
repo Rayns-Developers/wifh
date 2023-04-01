@@ -52,7 +52,7 @@
   </nav>
     <!-- END nav -->
     
-    <div class="hero-wrap" style="background-image: url('images/bg_7.jpg');" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap" id="hero" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -72,118 +72,25 @@
     				<div class="img img-about align-self-stretch" style="background-image: url(images/bg_3.jpg); width: 100%;"></div>
     			</div>
     			<div class="col-md-6 pl-md-5 ftco-animate">
-    				<h2 class="mb-4">MISSION</h2>
-    				<p>We strive to ensure that HIV positive sex workers access Anti-Retroviral Therapy(ART) and 
-              retained on treatment.
+    				<h2 class="mb-4" id="missionTitle"></h2>
+    				<p id="missionText">
             </p>
-            <h2 class="mb-4">VISION</h2>
-    				<p> A healthy and productive population which sufficiently contributes to the enconomy.
+            <h2 class="mb-4" id="visionTitle"></h2>
+    				<p id="visionText">
             </p>
-            <h2 class="mb-4">CORE VALUES</h2>
+            <h2 class="mb-4" id="coreTitle"></h2>
     				<p>The organization commits it self to uphold the following values:
             </p>
-            <p>Team work: we belive in collaborative efforts to achive goals effectively and efficiently
+            <p id="coreText">
             </p>
-            <p>Humanitarian: We are concerned with human welfare.
-            </p>
-            <p>Integrity: We do the right thing focusing on professionalism, honesty, fairness and accountability.
-            </p>
-            <p>People Development: We provide an environment that nurtures people towards their full potential  
-            </p>
+            
     				
     			</div>
     		</div>
     	</div>
     </section>
 
-    <!-- <section class="ftco-counter ftco-intro ftco-intro-2" id="section-counter">
-    	<div class="container">
-    		<div class="row no-gutters">
-    			<div class="col-md-5 d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18 color-1 align-items-stretch">
-              <div class="text">
-              	<span>Served Over</span>
-                <strong class="number" data-number="1432805">0</strong>
-                <span>Children in 190 countries in the world</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18 color-2 align-items-stretch">
-              <div class="text">
-              	<h3 class="mb-4">Donate Money</h3>
-              	<p>Even the all-powerful Pointing has no control about the blind texts.</p>
-              	<p><a href="#" class="btn btn-white px-3 py-2 mt-2">Donate Now</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18 color-3 align-items-stretch">
-              <div class="text">
-              	<h3 class="mb-4">Be a Volunteer</h3>
-              	<p>Even the all-powerful Pointing has no control about the blind texts.</p>
-              	<p><a href="#" class="btn btn-white px-3 py-2 mt-2">Be A Volunteer</a></p>
-              </div>
-            </div>
-          </div>
-    		</div>
-    	</div>
-    </section> -->
-
-    <!-- <section class="ftco-section bg-light">
-      <div class="container">
-      	<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section ftco-animate text-center">
-            <h2 class="mb-4">Latest Donations</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          </div>
-        </div>
-        <div class="row">
-        	<div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
-        		<div class="staff">
-        			<div class="d-flex mb-4">
-        				<div class="img" style="background-image: url(images/person_1.jpg);"></div>
-        				<div class="info ml-4">
-        					<h3><a href="teacher-single.html">Ivan Jacobson</a></h3>
-        					<span class="position">Donated Just now</span>
-        					<div class="text">
-		        				<p>Donated <span>$300</span> for <a href="#">Children Needs Food</a></p>
-		        			</div>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
-        		<div class="staff">
-        			<div class="d-flex mb-4">
-        				<div class="img" style="background-image: url(images/person_2.jpg);"></div>
-        				<div class="info ml-4">
-        					<h3><a href="teacher-single.html">Ivan Jacobson</a></h3>
-        					<span class="position">Donated Just now</span>
-        					<div class="text">
-		        				<p>Donated <span>$150</span> for <a href="#">Children Needs Food</a></p>
-		        			</div>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
-        		<div class="staff">
-        			<div class="d-flex mb-4">
-        				<div class="img" style="background-image: url(images/person_3.jpg);"></div>
-        				<div class="info ml-4">
-        					<h3><a href="teacher-single.html">Ivan Jacobson</a></h3>
-        					<span class="position">Donated Just now</span>
-        					<div class="text">
-		        				<p>Donated <span>$250</span> for <a href="#">Children Needs Food</a></p>
-		        			</div>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
-        </div>
-      </div>
-    </section> -->
+    
 		
 
     <footer class="ftco-footer ftco-section img">
@@ -270,7 +177,118 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
+  <script>
+    let PROJECT_ID = "wmdk9ehu";
+    let DATASET_NAME = "production";
+    let QUERY = encodeURIComponent("*[_type == 'about']{ title,'name':author->name, publishedAt, 'imageUrl': mainImage.asset->url, body }");
+    let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET_NAME}?query=${QUERY}`
 
+    async function getPosts(){
+      try{
+        
+        let response = await fetch(URL)
+        let {result} = await response.json()
+        let mission = "";
+        let vision = "";
+        let coreValues = "";
+        
+
+        console.log(result)          
+
+        let missionTitle = await document.getElementById("missionTitle")
+        let missionText = await document.getElementById("missionText")
+        if(result.length > 0 ){
+          result.forEach(blog => {
+            if (blog.title == "MISSION"){
+
+              console.log(blog.title)
+              missionTitle.innerText=`${blog.title}`
+              // let body = blog.body[0]
+              let children = blog.body[0].children
+              let blogText = "";
+              let addText = "";
+              // console.log(children)
+              
+              children.forEach(child => {
+                addText += child.text 
+                
+              })
+              blogText = addText
+              console.log(blogText)
+              missionText.innerText = `${blogText}`
+              
+            }else if (blog.title == "VISION"){
+
+              console.log(blog.title)
+              visionTitle.innerText=`${blog.title}`
+              // let body = blog.body[0]
+              let children = blog.body[0].children
+              let blogText = "";
+              let addText = "";
+              // console.log(children)
+              
+              children.forEach(child => {
+                addText += child.text 
+                
+              })
+              blogText = addText
+              console.log(blogText)
+              visionText.innerText = `${blogText}`
+              
+            }else if (blog.title == "CORE VALUES"){
+
+              console.log(blog.title)
+              coreTitle.innerText=`${blog.title}`
+              // let body = blog.body[0]
+              let children = blog.body[0].children
+              let blogText = "";
+              let addText = "";
+              console.log(children)
+              
+              children.forEach(child => {
+                addText += child.text 
+                
+              })
+              blogText = addText
+              console.log(blogText)
+              coreText.innerText = `${blogText}`
+              
+            }
+          })
+        }else{
+          console.log("No result")
+        }
+
+      }catch(err){
+        alert(err)
+      }
+    }
+    getPosts()
+// Loading the Hero Image
+    let QUERY2 = encodeURIComponent("*[_type == 'aboutImage']{ title,'name':author->name, publishedAt, 'imageUrl': mainImage.asset->url }");
+  let URL2 = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET_NAME}?query=${QUERY2}`
+
+  async function getImage(){
+    try{
+      
+      let response = await fetch(URL2)
+      let {result} = await response.json()         
+      let heroDiv = await document.getElementById("hero")
+
+      if(result.length > 0 ){
+        result.forEach(hero => {
+          heroDiv.setAttribute("style", `background-image: url(${hero.imageUrl});`)
+          const pubDate = new Date(hero.publishedAt)
+        })
+      }else{
+        console.log("No result")
+      }
+    }catch(err){
+      alert(err)
+    }
+  }
+ getImage()
+  </script>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
