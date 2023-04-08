@@ -73,16 +73,16 @@
           </div>
           <div class="w-100"></div>
           <div class="col-md-3">
-            <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+            <p id="address"><span class="icon icon-map-marker"></span></p>
           </div>
           <div class="col-md-3">
-            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+            <p><span class="icon icon-phone"></span> <a href="" id="phone"></a></p>
           </div>
           <div class="col-md-3">
-            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+            <p><span class="icon-facebook"></span> <a href="" id="facebook"></a></p>
           </div>
           <div class="col-md-3">
-            <p><span>Website</span> <a href="#">yoursite.com</a></p>
+            <p><span class="icon-twitter"></span> <a href="" id="twitter"></a></p>
           </div>
         </div>
         <div class="row block-9">
@@ -108,7 +108,7 @@
           
           </div>
 
-          <div class="col-md-6" id="map"></div>
+          <!-- <div class="col-md-6" id="map"></div> -->
         </div>
       </div>
     </section>
@@ -199,37 +199,51 @@
   <script>
     let PROJECT_ID = "wmdk9ehu";
     let DATASET_NAME = "production";
-    // let QUERY = encodeURIComponent("*[_type == 'gallery']{ title,'name':author->name, publishedAt, 'imageUrl': mainImage.asset->url }");
-    // let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET_NAME}?query=${QUERY}`
+    let QUERY = encodeURIComponent("*[_type == 'contact']{ title,'name':author->name, publishedAt, address, phone, facebook, twitter }");
+    let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET_NAME}?query=${QUERY}`
 
-    // async function getPosts(){
-    //   try{
+    async function getPosts(){
+      try{
         
-    //     let response = await fetch(URL)
-    //     let {result} = await response.json()
+        let response = await fetch(URL)
+        let {result} = await response.json()
 
-    //     // console.log(result.length)          
+        // console.log(result.length)          
 
-    //     let blogs = await document.getElementById("blogs")
-    //     if(result.length > 0 ){
-    //       result.forEach(blog => {
+        // let blogs = await document.getElementById("blogs")
+        if(result.length > 0 ){
+          result.forEach(blog => {
 
-    //         // console.log(children)
+            console.log(blog)
+            document.getElementById("address").innerHTML += ` ${blog.address}`
+            document.getElementById("phone").innerHTML += ` ${blog.phone}`
 
-    //         const pubDate = new Date(blog.publishedAt)
-    //         blogs.innerHTML +=`<a href="${blog.imageUrl}" class="gallery image-popup d-flex justify-content-center align-items-center img" style="background-image: url(${blog.imageUrl});"><div class="icon d-flex justify-content-center align-items-center"><span class="icon-search"></span></div></a>`
+            //setting up social links
+            let fb = document.getElementById("facebook")
+            let t = document.getElementById("twitter")
+
+            fb.innerHTML += ` ${blog.facebook}`
+            fb.setAttribute("href", blog.facebook)
+            fb.setAttribute("target", "_blank")
+
+            t.innerHTML += ` ${blog.twitter}`
+            t.setAttribute("href", blog.twitter)
+            t.setAttribute("target", "_blank")
+
+            const pubDate = new Date(blog.publishedAt)
+            // blogs.innerHTML +=`<a href="${blog.imageUrl}" class="gallery image-popup d-flex justify-content-center align-items-center img" style="background-image: url(${blog.imageUrl});"><div class="icon d-flex justify-content-center align-items-center"><span class="icon-search"></span></div></a>`
 
             
-    //       })
-    //     }else{
-    //       console.log("No result")
-    //     }
+          })
+        }else{
+          console.log("No result")
+        }
 
-    //   }catch(err){
-    //     alert(err)
-    //   }
-    // }
-    // getPosts()
+      }catch(err){
+        alert(err)
+      }
+    }
+    getPosts()
 
   // Loading the Hero Image
   
